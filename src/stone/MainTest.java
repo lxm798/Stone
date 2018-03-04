@@ -13,6 +13,7 @@ public class MainTest {
         Token token = null;
         while ((token = lexer.read()) != Token.EOF) {
             System.out.println(token.getLineNumber() + " " + (token.isNumber() ? token.getNumber() : token.getText()));
+
         }
     }
 
