@@ -1,11 +1,11 @@
 package stone.parse;
 
-import stone.Token;
+import stone.Lexer;
 import stone.ast.AstTree;
 
-public class BasicParser extends Parser{
+public class BasicParser extends Parser {
     @Override
-    public AstTree parse(Token token) {
+    public AstTree parse(Lexer token) {
         return null;
     }
 }
