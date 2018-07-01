@@ -1,6 +1,6 @@
 package stone.ast;
 
-public class StringNode extends AstLeaf {
+public class AstList extends AstTree {
     @Override
     public void eval() {
 

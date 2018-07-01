@@ -1,13 +1,16 @@
 package stone.ast;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public abstract class AstTree {
-    private ArrayList<AstTree> childrens = null;
+    protected ArrayList<AstTree> children = null;
 
     public AstTree getChild(int i) {
-        return childrens.get(i);
+        return children.get(i);
     }
 
-    abstract public void eval();
+    public Iterator<AstTree> children() {
+        return children.iterator();
+    }
 }

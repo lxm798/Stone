@@ -1,4 +1,8 @@
 package stone.ast;
 
-public class VarNode extends AstTree {
+public class VarNode extends AstLeaf {
+    @Override
+    public void eval() {
+
+    }
 }

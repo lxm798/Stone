@@ -7,8 +7,8 @@ import java.text.ParseException;
 import java.util.List;
 
 public abstract class Element {
-    protected abstract void parse(Lexer lexer, List<AstTree> res)
+    public abstract void parse(Lexer lexer, List<AstTree> res)
             throws ParseException;
 
-    protected abstract boolean match(Lexer lexer) throws ParseException;
+    public abstract boolean match(Lexer lexer) throws ParseException;
 }
