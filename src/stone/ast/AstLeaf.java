@@ -2,7 +2,7 @@ package stone.ast;
 
 import stone.Token;
 
-public class AstLeaf extends AstTree {
+public abstract class AstLeaf extends AstTree {
     protected Token token;
 
     public AstLeaf(Token t) {
