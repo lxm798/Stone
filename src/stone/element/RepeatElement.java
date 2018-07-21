@@ -11,7 +11,7 @@ public class RepeatElement extends Element {
     protected Parser parser;
     protected boolean onlyOnce;
     protected RepeatElement(Parser p, boolean once) { parser = p; onlyOnce = once; }
-    protected void parse(Lexer lexer, List<AstTree> res)
+    public void parse(Lexer lexer, List<AstTree> res)
             throws ParseException
     {
         while (parser.match(lexer)) {
@@ -22,7 +22,7 @@ public class RepeatElement extends Element {
                 break;
         }
     }
-    protected boolean match(Lexer lexer) throws ParseException {
+    public boolean match(Lexer lexer) throws ParseException {
         return parser.match(lexer);
     }
 }

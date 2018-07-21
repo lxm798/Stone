@@ -14,12 +14,12 @@ public class OrElement extends Element{
     }
     Parser[] parsers;
     @Override
-    protected void parse(Lexer lexer, List<AstTree> res) throws ParseException {
+    public void parse(Lexer lexer, List<AstTree> res) throws ParseException {
 
     }
 
     @Override
-    protected boolean match(Lexer lexer) throws ParseException {
+    public boolean match(Lexer lexer) throws ParseException {
         return false;
     }
 }

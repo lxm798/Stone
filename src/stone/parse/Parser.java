@@ -2,10 +2,13 @@ package stone.parse;
 
 import stone.Lexer;
 import stone.NumToken;
+import stone.ast.AstLeaf;
+import stone.ast.AstList;
 import stone.ast.AstTree;
 import stone.ast.NumNode;
 import stone.element.Element;
 import stone.element.OrElement;
+import stone.element.Skip;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -14,9 +17,7 @@ import java.util.List;
 
 public  class Parser {
     protected List<Element> elements;
-    public AstTree parse(Lexer lexer) {
 
-    }
     public Parser(Class<? extends AstTree> clazz) {
         reset(clazz);
     }
@@ -49,14 +50,14 @@ public  class Parser {
     public Parser number() {
         return number(null);
     }
-    public Parser number(Class<? extends ASTLeaf> clazz) {
+    public Parser number(Class<? extends AstLeaf> clazz) {
         elements.add(new NumNode(clazz));
         return this;
     }
     public Parser identifier(HashSet<String> reserved) {
         return identifier(null, reserved);
     }
-    public Parser identifier(Class<? extends ASTLeaf> clazz,
+    public Parser identifier(Class<? extends AstLeaf> clazz,
                              HashSet<String> reserved)
     {
         elements.add(new IdToken(clazz, reserved));
@@ -65,14 +66,11 @@ public  class Parser {
     public Parser string() {
         return string(null);
     }
-    public Parser string(Class<? extends ASTLeaf> clazz) {
+    public Parser string(Class<? extends AstLeaf> clazz) {
         elements.add(new StrToken(clazz));
         return this;
     }
-    public Parser token(String... pat) {
-        elements.add(new Leaf(pat));
-        return this;
-    }
+
     public Parser sep(String... pat) {
         elements.add(new Skip(pat));
         return this;
@@ -88,7 +86,7 @@ public  class Parser {
     public Parser maybe(Parser p) {
         Parser p2 = new Parser(p);
         p2.reset();
-        elements.add(new OrTree(new Parser[] { p, p2 }));
+        elements.add(new OrElement(new Parser[] { p, p2 }));
         return this;
     }
     public Parser option(Parser p) {
