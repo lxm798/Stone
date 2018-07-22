@@ -8,6 +8,7 @@ import stone.ast.AstTree;
 import stone.ast.NumNode;
 import stone.element.Element;
 import stone.element.OrElement;
+import stone.element.Repeat;
 import stone.element.Skip;
 
 import java.text.ParseException;
@@ -31,7 +32,7 @@ public  class Parser {
 
         return factory.make(results);
     }
-    protected boolean match(Lexer lexer) throws ParseException {
+    public boolean match(Lexer lexer) throws ParseException {
         if (elements.size() == 0)
             return true;
         else {
@@ -108,11 +109,11 @@ public  class Parser {
     }
     public Parser insertChoice(Parser p) {
         Element e = elements.get(0);
-        if (e instanceof OrTree)
-            ((OrTree)e).insert(p);
+        if (e instanceof OrElement)
+            ((OrElement)e).insert(p);
         else {
             Parser otherwise = new Parser(this);
-            reset(null);
+            reset();
             or(p, otherwise);
         }
         return this;
