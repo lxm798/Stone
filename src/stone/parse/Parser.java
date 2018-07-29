@@ -6,10 +6,7 @@ import stone.ast.AstLeaf;
 import stone.ast.AstList;
 import stone.ast.AstTree;
 import stone.ast.NumNode;
-import stone.element.Element;
-import stone.element.OrElement;
-import stone.element.Repeat;
-import stone.element.Skip;
+import stone.element.*;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -61,7 +58,7 @@ public  class Parser {
     public Parser identifier(Class<? extends AstLeaf> clazz,
                              HashSet<String> reserved)
     {
-        elements.add(new IdToken(clazz, reserved));
+        elements.add(new IdElement(clazz, reserved));
         return this;
     }
     public Parser string() {
